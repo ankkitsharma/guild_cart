@@ -24,7 +24,7 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  apps/seller:
+  apps/buyer:
     dependencies:
       '@workspace/ui':
         specifier: workspace:*
@@ -70,7 +70,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
-  apps/web:
+  apps/seller:
     dependencies:
       '@workspace/ui':
         specifier: workspace:*
