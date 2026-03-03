@@ -4,14 +4,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@workspace/ui/components/accordion";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+import { Button } from "@workspace/ui/components/button";
 
-export function VerticalMenu() {
+export function VerticalMenuAccordiaon() {
   return (
     <Accordion
       type="single"
       collapsible
       defaultValue="shipping"
-      className="max-w-lg md:hidden"
+      className="max-w-lg "
     >
       <AccordionItem value="shipping">
         <AccordionTrigger>What are your shipping options?</AccordionTrigger>
@@ -35,5 +46,26 @@ export function VerticalMenu() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
+  );
+}
+
+export function VerticalMenu() {
+  return (
+    <Drawer direction="left">
+      <DrawerTrigger className="md:hidden">Open</DrawerTrigger>
+      <DrawerContent className="md:hidden">
+        <DrawerHeader>
+          <DrawerTitle>Guild Cart</DrawerTitle>
+          <DrawerDescription>Praise the Sun!</DrawerDescription>
+          <VerticalMenuAccordiaon />
+        </DrawerHeader>
+        <DrawerFooter>
+          <Button>Submit</Button>
+          <DrawerClose>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 }
