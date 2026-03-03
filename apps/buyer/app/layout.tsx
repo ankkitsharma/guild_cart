@@ -2,6 +2,7 @@ import { Libre_Baskerville, Lora, IBM_Plex_Mono } from "next/font/google";
 
 import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
+import Navbar from "@/components/Navbar";
 
 const fontSans = Libre_Baskerville({
   subsets: ["latin"],
@@ -29,7 +30,10 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
