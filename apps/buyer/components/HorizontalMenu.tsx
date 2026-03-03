@@ -52,10 +52,10 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function HorizontalMenu() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden md:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Horizontal Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-96">
               <ListItem href="/docs" title="Introduction">
