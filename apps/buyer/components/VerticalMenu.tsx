@@ -16,7 +16,29 @@ import {
 } from "@workspace/ui/components/drawer";
 import { Button } from "@workspace/ui/components/button";
 
-export function VerticalMenuAccordiaon() {
+interface MenuItem {
+  title: string;
+  href: string;
+  description: string;
+  value: string;
+}
+
+interface VerticalMenuProps {
+  logo: {
+    img: string;
+    text: string;
+    href: string;
+  };
+  menuItems: MenuItem[];
+}
+
+interface VerticalMenuAccordiaonProps {
+  menuItems: MenuItem[];
+}
+
+export function VerticalMenuAccordiaon({
+  menuItems,
+}: VerticalMenuAccordiaonProps) {
   return (
     <Accordion
       type="single"
@@ -24,7 +46,7 @@ export function VerticalMenuAccordiaon() {
       defaultValue="shipping"
       className="max-w-lg "
     >
-      <AccordionItem value="shipping">
+      {/* <AccordionItem value="shipping">
         <AccordionTrigger>What are your shipping options?</AccordionTrigger>
         <AccordionContent>
           We offer standard (5-7 days), express (2-3 days), and overnight
@@ -45,11 +67,21 @@ export function VerticalMenuAccordiaon() {
           during business days.
         </AccordionContent>
       </AccordionItem>
+      */}
+
+      {menuItems.map((item, index) => {
+        return (
+          <AccordionItem value={item.value} key={index}>
+            <AccordionTrigger>{item.title}</AccordionTrigger>
+            <AccordionContent>{item.description}</AccordionContent>
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 }
 
-export function VerticalMenu() {
+export function VerticalMenu({ menuItems }: VerticalMenuProps) {
   return (
     <Drawer direction="left">
       <DrawerTrigger className="md:hidden">Open</DrawerTrigger>
@@ -57,7 +89,7 @@ export function VerticalMenu() {
         <DrawerHeader>
           <DrawerTitle>Guild Cart</DrawerTitle>
           <DrawerDescription>Praise the Sun!</DrawerDescription>
-          <VerticalMenuAccordiaon />
+          <VerticalMenuAccordiaon menuItems={menuItems} />
         </DrawerHeader>
         <DrawerFooter>
           <Button>Submit</Button>
