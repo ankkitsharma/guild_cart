@@ -57,7 +57,7 @@ export function TopBar() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link href={"#"} className="flex items-center whitespace-nowrap">
+            <Link href={"/"} className="flex items-center whitespace-nowrap">
               <Image
                 src={"/assets/gk_main_4.png"}
                 alt="Main Logo"

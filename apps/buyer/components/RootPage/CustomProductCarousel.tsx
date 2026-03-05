@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import { Card, CardContent } from "@workspace/ui/components/card";
 import {
   Carousel,
@@ -49,30 +50,32 @@ export function CustomProductCarousel({
             className="pl-4 md:basis-1/2 lg:basis-1/3"
           >
             <div className="p-1">
-              <Card className="overflow-hidden">
-                <CardContent className="p-4">
-                  <div className="relative w-full aspect-square mb-3">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      className="object-cover rounded-md"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2 line-clamp-2 h-10">
-                    {product.title}
-                  </h3>
-                  <StarRating rating={product.rating} />
-                  <div className="mt-3 flex items-baseline gap-2">
-                    <span className="text-lg font-bold">
-                      ₹{product.priceINR}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      ${product.priceUSD}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link href={`/product/${product.id}`}>
+                <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="relative w-full aspect-square mb-3">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-cover rounded-md"
+                      />
+                    </div>
+                    <h3 className="font-semibold text-sm mb-2 line-clamp-2 h-10">
+                      {product.title}
+                    </h3>
+                    <StarRating rating={product.rating} />
+                    <div className="mt-3 flex items-baseline gap-2">
+                      <span className="text-lg font-bold">
+                        ₹{product.priceINR}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        ${product.priceUSD}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </CarouselItem>
         ))}
