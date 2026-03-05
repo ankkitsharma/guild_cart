@@ -1,5 +1,9 @@
-import { Button } from "@workspace/ui/components/button";
+import HeroSection from "@/components/RootPage/HeroSection";
 
 export default function Page() {
-  return <div>Hello world</div>;
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 }
