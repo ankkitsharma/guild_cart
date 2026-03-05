@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { HorizontalMenu } from "./HorizontalMenu";
 import { VerticalMenu } from "./VerticalMenu";
 
@@ -13,7 +12,7 @@ const section_1: MenuItem = {
   title: "Section 1",
   childrens: [
     {
-      title: "Bla Blah",
+      title: "BlaBlah",
       href: "/docs/primitives/alert-dialog",
       description:
         "A modal dialog that interrupts the user with important content and expects a response.",
@@ -21,7 +20,7 @@ const section_1: MenuItem = {
   ],
 };
 
-const components = {
+const components: MenuItem = {
   title: "Components",
   childrens: [
     {
@@ -76,7 +75,7 @@ const components = {
   ],
 };
 
-const menuItems = [section_1, components];
+const menuItems = [section_1, components, components];
 
 export default function Navbar() {
   return (

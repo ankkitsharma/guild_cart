@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  // navigationMenuTriggerStyle,
 } from "@workspace/ui/components/navigation-menu";
 import { MenuItem } from "./Navbar";
 import { ChevronRight } from "lucide-react";
@@ -22,63 +22,6 @@ export function HorizontalMenu({ menuItems }: HorizontalMenuProps) {
   return (
     <NavigationMenu className="hidden md:block">
       <NavigationMenuList>
-        {/* <NavigationMenuItem>
-          <NavigationMenuTrigger>Horizontal Menu</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="w-96">
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built with Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem> */}
-        {/* {menuItems.map((item, index) => {
-          return (
-            <NavigationMenuItem className="hidden md:flex" key={index}>
-              <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <ListItem
-                    key={item.title}
-                    title={item.title}
-                    href={item.href ?? ""}
-                  >
-                    {item.childrens && item?.childrens?.length <= 1
-                      ? item.description
-                      : item.childrens?.map((child, index) => {
-                          return (
-                            <NavigationMenu
-                              className="hidden md:flex"
-                              key={index}
-                            >
-                              <NavigationMenuTrigger>
-                                {child.title}
-                              </NavigationMenuTrigger>
-                              <NavigationMenuContent>
-                                <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                  <ListItem
-                                    key={child.title}
-                                    title={child.title}
-                                    href={child.href ?? ""}
-                                  ></ListItem>
-                                </ul>
-                              </NavigationMenuContent>
-                            </NavigationMenu>
-                          );
-                        })}
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            
-          );
-        })} */}
         {menuItems.map((item, index) => (
           <NavigationMenuItem key={index}>
             {item.childrens && item.childrens.length > 0 ? (
@@ -106,35 +49,10 @@ export function HorizontalMenu({ menuItems }: HorizontalMenuProps) {
             )}
           </NavigationMenuItem>
         ))}
-        {/* <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">Docs</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );
 }
-
-// function ListItem({
-//   title,
-//   children,
-//   href,
-//   ...props
-// }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
-//   return (
-//     <li {...props}>
-//       <NavigationMenuLink asChild>
-//         <Link href={href}>
-//           <div className="flex flex-col gap-1 text-sm">
-//             <div className="leading-none font-medium">{title}</div>
-//             <div className="line-clamp-2 text-muted-foreground">{children}</div>
-//           </div>
-//         </Link>
-//       </NavigationMenuLink>
-//     </li>
-//   );
-// }
 
 function ListItem({
   item,
@@ -142,9 +60,6 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { item: MenuItem }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-  if (!item) {
-    return null;
-  }
 
   const handleMouseEnter = () => {
     // Clear any pending timeout to close the menu
@@ -170,6 +85,10 @@ function ListItem({
       }
     };
   }, []);
+
+  if (!item) {
+    return null;
+  }
 
   // If item has children, render with hover-triggered submenu
   if (item.childrens && item.childrens.length > 0) {
