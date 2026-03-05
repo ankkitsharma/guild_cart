@@ -1,12 +1,28 @@
 import { HorizontalMenu } from "./HorizontalMenu";
+import { TopBar } from "./TopBar";
 import { VerticalMenu } from "./VerticalMenu";
 
 export interface MenuItem {
   title: string;
   href?: string;
   description?: string;
+  logo?: {
+    path: string;
+    text: string;
+    main_logo: boolean;
+  };
   childrens?: MenuItem[];
 }
+
+// const main_logo: MenuItem = {
+//   title: "Guild Kart",
+//   href: "/",
+//   logo: {
+//     path: "/assets/gk_main_4.png",
+//     text: "Guild Kart Logo",
+//     main_logo: true,
+//   },
+// };
 
 const section_1: MenuItem = {
   title: "Section 1",
@@ -80,8 +96,13 @@ const menuItems = [section_1, components, components];
 export default function Navbar() {
   return (
     <>
-      <HorizontalMenu menuItems={menuItems} />
-      <VerticalMenu menuItems={menuItems} />
+      <div>
+        <TopBar />
+        <HorizontalMenu menuItems={menuItems} />
+      </div>
+
+      {/* todo: Update VerticalMenu to support the new menuItems structure */}
+      {/* <VerticalMenu menuItems={menuItems} /> */}
     </>
   );
 }

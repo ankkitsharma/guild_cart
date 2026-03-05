@@ -13,6 +13,7 @@ import {
 } from "@workspace/ui/components/navigation-menu";
 import { MenuItem } from "./Navbar";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface HorizontalMenuProps {
   menuItems: MenuItem[];
