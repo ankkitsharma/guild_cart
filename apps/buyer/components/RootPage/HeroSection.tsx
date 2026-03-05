@@ -1,12 +1,13 @@
 import React from "react";
-import { CustomCarousel } from "@/components/RootPage/CustomCarousel";
+import { CustomProductCarousel } from "@/components/RootPage/CustomProductCarousel";
+import { products } from "@/lib/products";
 
 export default function RootHeroSection() {
   return (
     <div>
       Root Hero Section
       <div className="ml-15">
-        <CustomCarousel />
+        <CustomProductCarousel products={products} />
       </div>
     </div>
   );
