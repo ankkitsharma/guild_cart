@@ -65,3 +65,17 @@ export const products: Product[] = [
     priceUSD: 27.99,
   },
 ];
+
+export type CartItem = {
+  productId: string;
+  userId: number;
+  quantity: number;
+};
+
+export const cart: CartItem[] = [
+  // {
+  //   productId: 1,
+  //   userId: 1,
+  //   quantity: 2,
+  // },
+];

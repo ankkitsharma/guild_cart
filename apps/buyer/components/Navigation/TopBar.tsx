@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import { user } from "@/lib/mockData/user";
 import { MapPin } from "lucide-react";
+import { cart } from "@/lib/mockData/products";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -96,27 +97,21 @@ export function TopBar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem className="hidden lg:flex">
-            <NavigationMenuTrigger>Returns and Orders</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link href={"/order"}>Returns and Orders</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className="hidden lg:flex">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <Link href="/docs">Cart</Link>
+              <Link href="/cart">
+                Cart {cart && cart.length > 0 && "(" + cart.length + ")"}
+              </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>

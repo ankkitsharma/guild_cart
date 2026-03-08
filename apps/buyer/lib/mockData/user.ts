@@ -1,4 +1,5 @@
 export const user = {
+  id: 1,
   name: "Jon Snow",
   firstName: "Jon",
   city: "Delhi",

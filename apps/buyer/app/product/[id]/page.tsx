@@ -3,6 +3,7 @@ import Image from "next/image";
 import { products } from "@/lib/mockData/products";
 import { Button } from "@workspace/ui/components/button";
 import { Card, CardContent } from "@workspace/ui/components/card";
+import { ProductActions } from "@/components/ProductActions";
 
 interface ProductPageProps {
   params: Promise<{
@@ -81,22 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <p className=" leading-relaxed">{product.description}</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-                  <Button
-                    size="lg"
-                    className="flex-1 text-lg py-6"
-                    variant="default"
-                  >
-                    Buy Now
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="flex-1 text-lg py-6"
-                    variant="outline"
-                  >
-                    Add to Cart
-                  </Button>
-                </div>
+                <ProductActions productId={id} />
               </div>
             </div>
           </CardContent>
