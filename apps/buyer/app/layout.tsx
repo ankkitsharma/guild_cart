@@ -2,7 +2,7 @@ import { Libre_Baskerville, Lora, IBM_Plex_Mono } from "next/font/google";
 
 import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navigation/Navbar";
 
 const fontSans = Libre_Baskerville({
   subsets: ["latin"],

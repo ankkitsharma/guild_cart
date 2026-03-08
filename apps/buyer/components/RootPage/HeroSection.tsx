@@ -1,6 +1,6 @@
 import React from "react";
 import { CustomProductCarousel } from "@/components/RootPage/CustomProductCarousel";
-import { products } from "@/lib/products";
+import { products } from "@/lib/mockData/products";
 
 export default function RootHeroSection() {
   return (

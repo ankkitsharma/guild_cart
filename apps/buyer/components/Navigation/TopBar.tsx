@@ -12,6 +12,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@workspace/ui/components/navigation-menu";
 import Image from "next/image";
+import { user } from "@/lib/mockData/user";
+import { MapPin } from "lucide-react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -69,7 +71,11 @@ export function TopBar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="hidden lg:flex">Deliver to Ankit</div>
+      <DeliverToAddress
+        // firstName={user.firstName}
+        city={user.city}
+        pinCode={user.pinCode}
+      />
       <input type="search" placeholder="search here..."></input>
       <NavigationMenu>
         <NavigationMenuList>
@@ -136,5 +142,34 @@ function ListItem({
         </Link>
       </NavigationMenuLink>
     </li>
+  );
+}
+
+interface DeliverToAddressProps {
+  firstName?: string;
+  city?: string;
+  pinCode?: string;
+}
+
+function DeliverToAddress({ firstName, city, pinCode }: DeliverToAddressProps) {
+  return (
+    <div className="hidden lg:flex flex-row">
+      <MapPin />
+      {pinCode ? (
+        <div className="flex flex-col">
+          <div>Deliver to {firstName ?? city + " " + pinCode}</div>
+
+          {firstName ? (
+            <div>
+              <span>{city}</span> <span>{pinCode}</span>
+            </div>
+          ) : (
+            <div>Update Location</div>
+          )}
+        </div>
+      ) : (
+        <div>Update Location</div>
+      )}
+    </div>
   );
 }

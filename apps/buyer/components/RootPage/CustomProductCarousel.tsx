@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@workspace/ui/components/carousel";
-import { Product } from "@/lib/products";
+import { Product } from "@/lib/mockData/products";
 import Image from "next/image";
 
 interface CustomProductCarouselProps {
